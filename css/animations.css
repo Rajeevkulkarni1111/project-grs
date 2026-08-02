@@ -1,0 +1,162 @@
+.sun-glow {
+    transform: translateX(-50%);
+    animation: glowPulse 8s ease-in-out infinite;
+}
+
+.sun {
+    transform: translateX(-50%);
+    animation:
+        sunRise 2.4s ease forwards,
+        floatSun 6.8s ease-in-out infinite 2.4s;
+}
+
+.cloud1 {
+    animation: cloudDriftOne 24s ease-in-out infinite alternate;
+}
+
+.cloud2 {
+    animation: cloudDriftTwo 28s ease-in-out infinite alternate;
+}
+
+.cloud3 {
+    animation: cloudDriftThree 22s ease-in-out infinite alternate;
+}
+
+.cloud4 {
+    animation: cloudDriftFour 30s ease-in-out infinite alternate;
+}
+
+.hero {
+    transform: translate(-50%, -50%);
+    animation: fadeHero 1.4s ease forwards;
+}
+
+#grs {
+    animation: floatTitle 5.4s ease-in-out infinite 1.4s;
+}
+
+#beginBtn {
+    transform: scale(0.94);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease;
+}
+
+#beginBtn:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.54) 0%, rgba(255, 255, 255, 0.26) 100%);
+    box-shadow:
+        0 22px 46px rgba(94, 144, 180, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+@keyframes sunRise {
+    from {
+        transform: translate(-50%, 90px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes floatSun {
+    0% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -10px);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        transform: translateX(-50%) scale(0.96);
+        opacity: 0.82;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.04);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(0.96);
+        opacity: 0.82;
+    }
+}
+
+@keyframes cloudDriftOne {
+    from {
+        transform: translate3d(-18px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(42px, -10px, 0);
+    }
+}
+
+@keyframes cloudDriftTwo {
+    from {
+        transform: translate3d(14px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-36px, 12px, 0);
+    }
+}
+
+@keyframes cloudDriftThree {
+    from {
+        transform: translate3d(-12px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(28px, 8px, 0);
+    }
+}
+
+@keyframes cloudDriftFour {
+    from {
+        transform: translate3d(16px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-44px, -8px, 0);
+    }
+}
+
+@keyframes fadeHero {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -44%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes floatTitle {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,100 @@
+@media (max-width: 768px) {
+    .hero {
+        width: min(92vw, 560px);
+        min-width: auto;
+        padding: 34px 24px 30px;
+        top: 56%;
+    }
+
+    #grs {
+        font-size: 5rem;
+        letter-spacing: 0.35rem;
+        gap: 4px;
+    }
+
+    .name {
+        font-size: 2.2rem;
+    }
+
+    .gift {
+        font-size: 0.82rem;
+        letter-spacing: 0.35rem;
+    }
+
+    #beginBtn {
+        padding: 15px 30px;
+    }
+
+    .sun-glow {
+        width: 300px;
+        height: 300px;
+        top: 5%;
+    }
+
+    .sun {
+        width: 104px;
+        height: 104px;
+        top: 7%;
+    }
+
+    .cloud1 {
+        left: 2%;
+        top: 16%;
+    }
+
+    .cloud2 {
+        left: 64%;
+        top: 22%;
+    }
+
+    .cloud3 {
+        left: 0;
+        top: 66%;
+    }
+
+    .cloud4 {
+        left: 60%;
+        top: 72%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        width: calc(100vw - 28px);
+        padding: 28px 18px 24px;
+        border-radius: 28px;
+    }
+
+    #grs {
+        font-size: 3.8rem;
+    }
+
+    .name {
+        font-size: 1.8rem;
+    }
+
+    .gift {
+        font-size: 0.74rem;
+        letter-spacing: 0.28rem;
+    }
+
+    #beginBtn {
+        width: 100%;
+        padding: 15px 22px;
+    }
+
+    .sun-glow {
+        width: 240px;
+        height: 240px;
+    }
+
+    .sun {
+        width: 88px;
+        height: 88px;
+    }
+
+    .cloud2,
+    .cloud4 {
+        left: 54%;
+    }
+}
