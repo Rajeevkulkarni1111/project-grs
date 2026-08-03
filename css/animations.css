@@ -41,7 +41,17 @@
 .envelope-flap,
 .envelope-seal,
 .letter-sheet,
-.letter-paper {
+.letter-paper,
+.letter-question,
+.choice-btn,
+.angry-envelope,
+.angry-screen-overlay,
+.angry-note-modal,
+.timeline-section,
+.timeline-header,
+.memory-card,
+.memory-photo-frame,
+.screen-flash {
     will-change: transform, opacity;
 }
 

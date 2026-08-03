@@ -381,6 +381,7 @@ body {
 .envelope-back {
     inset: 0;
     background: linear-gradient(180deg, #f3f8fc 0%, #d7e3ee 100%);
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -389,14 +390,15 @@ body {
     border-radius: 22px;
     background:
         linear-gradient(180deg, rgba(199, 216, 231, 0.96) 0%, rgba(235, 243, 250, 0.96) 100%);
+    pointer-events: none;
     z-index: 2;
 }
 
 .letter-sheet {
-    top: 14%;
-    left: 12%;
-    width: 76%;
-    height: 82%;
+    top: 8%;
+    left: 8%;
+    width: 84%;
+    height: 96%;
     transform-origin: center top;
     z-index: 3;
 }
@@ -404,7 +406,7 @@ body {
 .letter-paper {
     width: 100%;
     height: 100%;
-    padding: 22px 20px 18px;
+    padding: 18px 18px 14px;
     border-radius: 18px;
     background:
         radial-gradient(circle at 20% 15%, rgba(255, 248, 230, 0.6) 0%, transparent 50%),
@@ -412,29 +414,39 @@ body {
         linear-gradient(180deg, #fffcf4 0%, #f8f0de 48%, #f2e6cc 100%);
     border: 1px solid rgba(210, 188, 152, 0.4);
     box-shadow:
-        0 12px 28px rgba(67, 52, 34, 0.12),
-        0 2px 6px rgba(67, 52, 34, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 14px 32px rgba(45, 32, 18, 0.16),
+        0 2px 6px rgba(45, 32, 18, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
         inset 0 -1px 0 rgba(210, 188, 152, 0.12);
     color: #5c4531;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .letter-greeting {
     font-family: "Caveat", cursive;
-    font-size: clamp(1.7rem, 4.2vw, 2.2rem);
+    font-size: clamp(1.5rem, 3.8vw, 1.9rem);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.2;
     color: #4d3a2a;
 }
 
 .letter-copy {
     font-family: "Caveat", cursive;
-    font-size: clamp(1.15rem, 3vw, 1.45rem);
-    line-height: 1.4;
+    font-size: clamp(1.05rem, 2.7vw, 1.25rem);
+    line-height: 1.35;
     color: #6b5440;
+}
+
+.letter-question {
+    margin-top: 4px;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: clamp(1.1rem, 2.7vw, 1.3rem);
+    font-weight: 700;
+    color: #4a3828;
+    line-height: 1.3;
 }
 
 .envelope-pocket-left,
@@ -552,6 +564,519 @@ body {
 ========================================= */
 
 .letter-greeting,
-.letter-copy {
+.letter-copy,
+.letter-question,
+.choice-btn {
     opacity: 0;
+}
+
+.letter-question {
+    margin-top: auto;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: clamp(1.15rem, 2.9vw, 1.4rem);
+    font-weight: 700;
+    color: #4a3828;
+    line-height: 1.35;
+}
+
+/* =========================================
+   Sprint 6 Choice Buttons
+========================================= */
+
+.letter-actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 6px;
+    padding-bottom: 4px;
+    width: 100%;
+    z-index: 25;
+    pointer-events: auto;
+}
+
+.choice-btn {
+    position: relative;
+    padding: 8px 24px;
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(8px);
+    box-shadow:
+        0 8px 20px rgba(67, 52, 34, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition:
+        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    user-select: none;
+    touch-action: manipulation;
+    z-index: 25;
+    pointer-events: auto;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, rgba(255, 250, 235, 0.88) 0%, rgba(245, 226, 185, 0.72) 100%);
+    color: #4a3418;
+}
+
+.yes-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    background: linear-gradient(135deg, rgba(255, 255, 245, 0.95) 0%, rgba(250, 235, 195, 0.88) 100%);
+    box-shadow:
+        0 12px 24px rgba(180, 140, 70, 0.28),
+        0 0 14px rgba(255, 220, 130, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.yes-btn:active {
+    transform: translateY(1px) scale(0.96);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, rgba(255, 242, 242, 0.85) 0%, rgba(248, 218, 218, 0.68) 100%);
+    color: #5c3535;
+}
+
+.no-btn:hover {
+    box-shadow:
+        0 10px 22px rgba(160, 80, 80, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================
+   Sprint 6 Angry Envelope
+========================================= */
+
+.angry-envelope {
+    position: absolute;
+    top: 15%;
+    right: -130px;
+    width: 160px;
+    padding: 14px 12px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 238, 238, 0.94) 0%, rgba(255, 210, 210, 0.88) 100%);
+    border: 1px solid rgba(255, 175, 175, 0.65);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 16px 36px rgba(120, 40, 40, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.angry-envelope-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.angry-envelope-badge {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.angry-text {
+    font-family: "Caveat", cursive;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #6b2828;
+    line-height: 1.25;
+}
+
+/* =========================================
+   Sprint 6 Full Screen Angry Overlay & Note
+========================================= */
+
+.angry-screen-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(160, 20, 20, 0.88) 0%, rgba(70, 8, 8, 0.96) 100%);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.angry-note-modal {
+    position: relative;
+    width: min(420px, calc(100vw - 44px));
+    padding: 32px 26px 26px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #fff2f2 0%, #ffd6d6 100%);
+    border: 2px solid rgba(255, 90, 90, 0.7);
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.52),
+        0 0 34px rgba(255, 60, 60, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    text-align: center;
+    transform: scale(0.7);
+    opacity: 0;
+}
+
+.angry-note-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    background: rgba(220, 38, 38, 0.12);
+    color: #991b1b;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.angry-note-close:hover {
+    background: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+}
+
+.angry-note-close:active {
+    transform: scale(0.95);
+}
+
+.angry-note-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.angry-emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.angry-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #881337;
+    letter-spacing: 0.02em;
+}
+
+.angry-note-text {
+    font-family: "Caveat", cursive;
+    font-size: clamp(1.4rem, 3.8vw, 1.75rem);
+    font-weight: 700;
+    color: #710e2b;
+    line-height: 1.35;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* =========================================
+   Sprint 6 Camera Flash & Sparkles
+========================================= */
+
+.screen-flash {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.choice-sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 245, 200, 1) 0%, rgba(255, 210, 100, 0.8) 100%);
+    box-shadow: 0 0 12px rgba(255, 215, 100, 0.8);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* =========================================
+   Sprint 7 Memory Timeline
+========================================= */
+
+body.timeline-active {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+}
+
+body.timeline-active .sky {
+    min-height: 100vh;
+    height: auto !important;
+    overflow-y: visible !important;
+}
+
+.timeline-section {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 24px 140px;
+    z-index: 15;
+    display: none;
+    opacity: 0;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 72px;
+    opacity: 0;
+}
+
+.timeline-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3.2rem, 7vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--color-title);
+    text-shadow:
+        0 0 24px rgba(255, 255, 255, 0.8),
+        0 8px 24px rgba(45, 75, 105, 0.2);
+    margin-bottom: 8px;
+}
+
+.timeline-subtitle {
+    font-family: "Caveat", cursive;
+    font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 8px rgba(35, 60, 85, 0.25);
+}
+
+.timeline-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    width: 100%;
+}
+
+.timeline-track {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0.15) 100%);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.memory-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+}
+
+.memory-card.photo-right .memory-note {
+    grid-column: 1;
+}
+
+.memory-card.photo-right .memory-media {
+    grid-column: 2;
+}
+
+.memory-media {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.memory-photo-frame {
+    position: relative;
+    width: min(340px, 100%);
+    padding: 14px 14px 18px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 20px 45px rgba(32, 54, 76, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.memory-photo-frame:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+        0 28px 56px rgba(32, 54, 76, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.memory-photo-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.22;
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.12);
+}
+
+.memory-photo-img {
+    width: 100%;
+    aspect-ratio: 1.22;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.photo-bg-1 {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.photo-bg-2 {
+    background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+}
+
+.photo-bg-3 {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.photo-bg-4 {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.photo-bg-5 {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.photo-bg-6 {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.memory-badge {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #27415f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.memory-photo-caption {
+    margin-top: 10px;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #223f5b;
+}
+
+.memory-note {
+    width: 100%;
+}
+
+.memory-note-paper {
+    position: relative;
+    padding: 24px 26px;
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(255, 248, 230, 0.6) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 228, 196, 0.4) 0%, transparent 45%),
+        linear-gradient(180deg, #fffcf4 0%, #f8f0de 50%, #f1e4c9 100%);
+    border: 1px solid rgba(210, 188, 152, 0.45);
+    box-shadow:
+        0 16px 36px rgba(45, 32, 18, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    color: #4a3625;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.memory-note-paper:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 22px 48px rgba(45, 32, 18, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.memory-date {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(185, 145, 95, 0.15);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #7a5836;
+    margin-bottom: 8px;
+}
+
+.memory-heading {
+    font-family: "Caveat", cursive;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #3b2a1a;
+    margin-bottom: 6px;
+}
+
+.memory-body {
+    font-family: "Caveat", cursive;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: #5c4531;
+}
+
+/* =========================================
+   Timeline Responsive (Tablet & Mobile)
+========================================= */
+
+@media (max-width: 768px) {
+    .timeline-track {
+        left: 20px;
+        transform: none;
+    }
+
+    .memory-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-left: 36px;
+    }
+
+    .memory-card.photo-right .memory-note,
+    .memory-card.photo-right .memory-media {
+        grid-column: auto;
+    }
+
+    .memory-media {
+        justify-content: flex-start;
+    }
 }

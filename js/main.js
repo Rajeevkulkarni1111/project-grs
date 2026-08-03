@@ -1,5 +1,10 @@
 window.addEventListener("load", () => {
     const scene = window.createEnvelopeScene(document);
+    const timelineModule = window.createTimelineModule ? window.createTimelineModule(document) : null;
+
+    if (timelineModule) {
+        timelineModule.initTimeline();
+    }
     const {
         sky,
         hero,
@@ -210,4 +215,76 @@ window.addEventListener("load", () => {
         event.preventDefault();
         handleEnvelopeOpen();
     });
+
+    /* =========================================
+       Sprint 6: Friendship Choice Interaction
+    ========================================= */
+
+    let yesClicked = false;
+
+    /* NO Button Click Logic -> Triggers Angry Screen Overlay & Note */
+    const handleNoClick = event => {
+        if (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
+        if (yesClicked) {
+            return;
+        }
+
+        scene.createAngryScreenTimeline();
+    };
+
+    scene.elements.noBtn.addEventListener("click", handleNoClick);
+
+    /* Angry Note Cut / Close Button Click Logic */
+    if (scene.elements.angryNoteCloseBtn) {
+        scene.elements.angryNoteCloseBtn.addEventListener("click", event => {
+            event.stopPropagation();
+            scene.createCloseAngryScreenTimeline();
+        });
+    }
+
+    /* YES Button Click Logic */
+    const handleYesClick = event => {
+        if (event) {
+            event.stopPropagation();
+            if (event.type !== "click") {
+                event.preventDefault();
+            }
+        }
+
+        if (yesClicked) {
+            return;
+        }
+
+        yesClicked = true;
+
+        scene.elements.yesBtn.style.pointerEvents = "none";
+        scene.elements.noBtn.style.pointerEvents = "none";
+
+        scene.createYesSequenceTimeline(() => {
+            /* Sprint 7: Flash complete -> Hide hero/envelope -> Reveal Memory Timeline */
+            gsap.set([envelopeStage, hero], { display: "none" });
+
+            if (timelineModule) {
+                timelineModule.revealTimeline();
+            }
+
+            gsap.to(scene.elements.screenFlash, {
+                opacity: 0,
+                duration: 0.9,
+                ease: "power2.out",
+                onComplete: () => {
+                    gsap.set(scene.elements.screenFlash, { pointerEvents: "none" });
+                }
+            });
+        });
+    };
+
+    if (scene.elements.yesBtn) {
+        scene.elements.yesBtn.addEventListener("click", handleYesClick);
+        scene.elements.yesBtn.addEventListener("touchstart", handleYesClick, { passive: false });
+    }
 });

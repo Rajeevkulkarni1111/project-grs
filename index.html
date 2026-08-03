@@ -11,7 +11,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -77,7 +79,13 @@
                     <div class="letter-sheet">
                         <div class="letter-paper">
                             <p class="letter-greeting">Dear Rashmi,</p>
-                            <p class="letter-copy">Happy Friendship Day Dushmi ✨ tu meri bestie forever hai… mein bhi hoo na tera? 💛</p>
+                            <p class="letter-copy">Happy Friendship Day Dushmi ✨ tu meri bestie forever hai… mein bhi
+                                hoo na tera? 💛</p>
+                            <p class="letter-question">Tere liye bhi hoon na mein bestie forever?</p>
+                            <div class="letter-actions">
+                                <button id="yesBtn" class="choice-btn yes-btn" type="button">YES</button>
+                                <button id="noBtn" class="choice-btn no-btn" type="button">NO</button>
+                            </div>
                         </div>
                     </div>
                     <div class="envelope-pocket envelope-pocket-left"></div>
@@ -89,15 +97,188 @@
                     <div class="envelope-highlight"></div>
                 </div>
 
+                <!-- Angry Envelope (Sprint 6 NO Button Interaction) -->
+                <div class="angry-envelope" aria-hidden="true">
+                    <div class="angry-envelope-body">
+                        <div class="angry-envelope-flap"></div>
+                        <div class="angry-envelope-badge">😤</div>
+                        <div class="angry-envelope-content">
+                            <p class="angry-text">I'll write something funny here later 😤</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </section>
+
+        <!-- Angry Screen Overlay & Angry Note Modal (Sprint 6 NO Button Update) -->
+        <div class="angry-screen-overlay" aria-hidden="true">
+            <div class="angry-note-modal" role="dialog" aria-modal="true" aria-label="Angry Note">
+                <button id="angryNoteCloseBtn" class="angry-note-close" type="button"
+                    aria-label="Close note">&times;</button>
+                <div class="angry-note-header">
+                    <span class="angry-emoji">🤬</span>
+                    <h3 class="angry-title"> Yeee !</h3>
+                </div>
+                <p class="angry-note-text">Behen ki lodi saali madarchod chup "yes" daba waha 🤬😒</p>
+            </div>
+        </div>
+
+        <!-- =========================
+                MEMORY TIMELINE
+        ========================== -->
+
+        <section id="timelineSection" class="timeline-section" aria-hidden="true">
+
+            <header class="timeline-header">
+                <h2 class="timeline-title">Our Memories</h2>
+                <p class="timeline-subtitle">Some moments I'll always keep with me.</p>
+            </header>
+
+            <div class="timeline-container">
+                <div class="timeline-track" aria-hidden="true"></div>
+
+                <!-- Memory 1: Photo Left | Note Right -->
+                <article class="memory-card photo-left">
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-1">
+                                <span class="memory-badge">📸 Chapter I</span>
+                            </div>
+                            <p class="memory-photo-caption">The Beginning ✨</p>
+                        </div>
+                    </div>
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">Day 01</span>
+                            <h3 class="memory-heading">Humari First Photo 😁</h3>
+                            <p class="memory-body">ye photo yaad hai.., Rashmi? tu na sirf mereko baju bithake sab
+                                batayi dikhayi thi apna sab kuch uss din phir nache apan...😁 tab thi humari first photo
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Memory 2: Note Left | Photo Right -->
+                <article class="memory-card photo-right">
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">yaad Hai..?</span>
+                            <h3 class="memory-heading">3 AM Gossip Sessions</h3>
+                            <p class="memory-body">Tereko yaad mein jo subah utne waala tha mein , usme tu raat bhar
+                                baate karti thi..🤣 dresses try karti thi jhumke wagera ek din mere papa gaali diye teri
+                                phat gayi thi😂</p>
+                        </div>
+                    </div>
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-2">
+                                <span class="memory-badge">🌙 Chapter II</span>
+                            </div>
+                            <p class="memory-photo-caption">Night Owl Vibes ☕</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Memory 3: Photo Left | Note Right -->
+                <article class="memory-card photo-left">
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-3">
+                                <span class="memory-badge">🤪 Chapter III</span>
+                            </div>
+                            <p class="memory-photo-caption">Pure Chaos 💫</p>
+                        </div>
+                    </div>
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">Unfiltered</span>
+                            <h3 class="memory-heading">Laughing Till It Hurts</h3>
+                            <p class="memory-body">Pata nhi tereko kya hogaya tha kii jo achanak gaali dene chalu kardi
+                                thi tu...mere thoda aur bhavani ki wajah se pehle bhi deti thi lekin yaha se bht zyada
+                                deti tu mereko har baar hastati thi.., bolna nhi chahta lekin mereko abhi bht maza aati
+                                abhi bhi 😂</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Memory 4: Note Left | Photo Right -->
+                <article class="memory-card photo-right">
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">Serious Dushmi</span>
+                            <h3 class="memory-heading">Side By Side</h3>
+                            <p class="memory-body">Tu itni serious hogayi thi apne aivsc camp phir afcat ko lekar saali
+                                mereko phone karke kuch plane ke baare mein kuch maths ke baare mein kuch toh ek raat ko
+                                ek hii baar lagari thi lekin full pakayi tu 😂 bht horrible tha woh</p>
+                        </div>
+                    </div>
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-4">
+                                <span class="memory-badge">🤝 Chapter IV</span>
+                            </div>
+                            <p class="memory-photo-caption"> uff..!!</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Memory 5: Photo Left | Note Right -->
+                <article class="memory-card photo-left">
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-5">
+                                <span class="memory-badge">🌈 Chapter V</span>
+                            </div>
+                            <p class="memory-photo-caption">Unshakable Support 🛡</p>
+                        </div>
+                    </div>
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">Crazy Times</span>
+                            <h3 class="memory-heading">Unapologetically Us</h3>
+                            <p class="memory-body">Pata haii mein cricket match haar ke aayi tu poochi bhi nhi mereko,
+                                phir tu suni , mein zindagi mein pehli baar apne mann ke dard kisi ko bol paaya thaa
+                                ...bht relief feel hua tha .. THANK YOU ,last ke thode baato mein uff🫤, agli baarse
+                                dekhletu mein galeez hai tu </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Memory 6: Note Left | Photo Right -->
+                <article class="memory-card photo-right">
+                    <div class="memory-note">
+                        <div class="memory-note-paper">
+                            <span class="memory-date">Forever</span>
+                            <h3 class="memory-heading">Besties For Life</h3>
+                            <p class="memory-body">Finally hum degree khatam kare woh bhi acche se saath mein padne ka
+                                kaise bhool saktu mein saare acche memories Thankful rehna tu tera clg life bht asaan
+                                kara mein warna marti thi 😎😁 tu bhi bht thoda kari asaan .. Theek hai </p>
+                        </div>
+                    </div>
+                    <div class="memory-media">
+                        <div class="memory-photo-frame">
+                            <div class="memory-photo-placeholder photo-bg-6">
+                                <span class="memory-badge">💫 Chapter VI</span>
+                            </div>
+                            <p class="memory-photo-caption">From clg to Bengaluru Till infinity and Beyond 🚀</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </section>
+
+        <!-- White Camera Flash (Sprint 6 YES Button Interaction) -->
+        <div class="screen-flash" aria-hidden="true"></div>
 
     </main>
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="js/envelope.js"></script>
+    <script src="js/timeline.js"></script>
     <script src="js/main.js"></script>
 
 </body>
