@@ -1,0 +1,5 @@
+Place your 2 video files here:
+- video1.mp4 (For "Our Beginning" section)
+- video2.mp4 (For "Our Latest Memory" section)
+
+Supported formats: .mp4 (If you use .webm or .mov, update the <source src="..."> tags in index.html accordingly!)

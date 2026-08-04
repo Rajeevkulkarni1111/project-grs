@@ -1,9 +1,14 @@
 window.addEventListener("load", () => {
     const scene = window.createEnvelopeScene(document);
     const timelineModule = window.createTimelineModule ? window.createTimelineModule(document) : null;
+    const endingModule = window.createEndingModule ? window.createEndingModule(document) : null;
 
     if (timelineModule) {
         timelineModule.initTimeline();
+    }
+
+    if (endingModule) {
+        endingModule.initEnding();
     }
     const {
         sky,
@@ -269,7 +274,11 @@ window.addEventListener("load", () => {
             gsap.set([envelopeStage, hero], { display: "none" });
 
             if (timelineModule) {
-                timelineModule.revealTimeline();
+                timelineModule.revealTimeline(null, () => {
+                    if (endingModule) {
+                        endingModule.startEndingSequence();
+                    }
+                });
             }
 
             gsap.to(scene.elements.screenFlash, {

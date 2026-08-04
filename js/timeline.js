@@ -3,6 +3,8 @@
         const section = root.querySelector("#timelineSection");
         const header = root.querySelector(".timeline-header");
         const cards = root.querySelectorAll(".memory-card");
+        let timelineFinishCallback = null;
+        let timelineFinished = false;
 
         const initTimeline = () => {
             if (!section) return;
@@ -11,12 +13,22 @@
             gsap.set(cards, { opacity: 0, y: 28 });
         };
 
+        const triggerFinish = () => {
+            if (timelineFinished) return;
+            timelineFinished = true;
+            if (typeof timelineFinishCallback === "function") {
+                timelineFinishCallback();
+            }
+        };
+
         const setupScrollObserver = () => {
             const observerOptions = {
                 root: null,
                 rootMargin: "50px 0px -5% 0px",
                 threshold: 0.05
             };
+
+            const lastCard = cards.length > 0 ? cards[cards.length - 1] : null;
 
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
@@ -28,6 +40,10 @@
                             ease: "power2.out"
                         });
                         obs.unobserve(entry.target);
+
+                        if (lastCard && entry.target === lastCard) {
+                            setTimeout(triggerFinish, 2500);
+                        }
                     }
                 });
             }, observerOptions);
@@ -35,7 +51,10 @@
             cards.forEach(card => observer.observe(card));
         };
 
-        const revealTimeline = onComplete => {
+        const revealTimeline = (onComplete, onFinish) => {
+            if (onFinish) {
+                timelineFinishCallback = onFinish;
+            }
             if (!section) return;
 
             document.body.classList.add("timeline-active");
@@ -66,9 +85,14 @@
             return tl;
         };
 
+        const setFinishCallback = cb => {
+            timelineFinishCallback = cb;
+        };
+
         return {
             initTimeline,
-            revealTimeline
+            revealTimeline,
+            setFinishCallback
         };
     };
 })();

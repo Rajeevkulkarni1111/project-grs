@@ -51,7 +51,14 @@
 .timeline-header,
 .memory-card,
 .memory-photo-frame,
-.screen-flash {
+.screen-flash,
+.video-experience-section,
+.video-frame-wrap,
+.final-scene-section,
+.final-heading,
+.final-name,
+.final-line,
+.final-signature {
     will-change: transform, opacity;
 }
 
