@@ -933,6 +933,20 @@ body.timeline-active .sky {
         inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
+.memory-photo-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.memory-photo-wrapper .memory-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 2;
+}
+
 .memory-photo-placeholder {
     position: relative;
     width: 100%;
@@ -952,6 +966,32 @@ body.timeline-active .sky {
     border-radius: 14px;
     display: block;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: aspect-ratio 0.3s ease, object-fit 0.3s ease;
+}
+
+/* Portrait / Mobile Screenshot ratio options */
+.memory-photo-img.portrait {
+    aspect-ratio: 0.85;
+}
+
+.memory-photo-img.tall {
+    aspect-ratio: 0.72;
+}
+
+/* Fit entire image without cropping (Great for mobile screenshots!) */
+.memory-photo-img.contain {
+    object-fit: contain;
+    background: rgba(18, 32, 50, 0.55);
+    backdrop-filter: blur(12px);
+}
+
+/* Object position focal alignment */
+.memory-photo-img.pos-top {
+    object-position: top center;
+}
+
+.memory-photo-img.pos-bottom {
+    object-position: bottom center;
 }
 
 .photo-bg-1 {

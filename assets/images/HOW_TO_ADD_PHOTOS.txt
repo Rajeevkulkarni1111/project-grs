@@ -1,0 +1,9 @@
+Place your 6 memory photo files here:
+- photo1.jpg (For Chapter I - The Beginning)
+- photo2.jpg (For Chapter II - Night Owl Vibes)
+- photo3.jpg (For Chapter III - Pure Chaos)
+- photo4.jpg (For Chapter IV - Serious Dushmi)
+- photo5.jpg (For Chapter V - Unshakable Support)
+- photo6.jpg (For Chapter VI - Besties For Life)
+
+Supported Formats: .jpg, .jpeg, .png, .webp (If you use .png or .png extensions, update the `src` attribute in index.html accordingly!)
