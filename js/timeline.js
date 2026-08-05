@@ -3,6 +3,8 @@
         const section = root.querySelector("#timelineSection");
         const header = root.querySelector(".timeline-header");
         const cards = root.querySelectorAll(".memory-card");
+        const continueWrap = root.querySelector(".timeline-action-wrap");
+        const continueBtn = root.querySelector("#continueBtn");
         let timelineFinishCallback = null;
         let timelineFinished = false;
 
@@ -11,6 +13,7 @@
             gsap.set(section, { autoAlpha: 0, display: "none" });
             gsap.set(header, { opacity: 0, y: 32 });
             gsap.set(cards, { opacity: 0, y: 28 });
+            if (continueWrap) gsap.set(continueWrap, { opacity: 0, y: 20 });
         };
 
         const triggerFinish = () => {
@@ -18,6 +21,17 @@
             timelineFinished = true;
             if (typeof timelineFinishCallback === "function") {
                 timelineFinishCallback();
+            }
+        };
+
+        const revealContinueButton = () => {
+            if (continueWrap) {
+                gsap.to(continueWrap, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.85,
+                    ease: "power2.out"
+                });
             }
         };
 
@@ -42,7 +56,7 @@
                         obs.unobserve(entry.target);
 
                         if (lastCard && entry.target === lastCard) {
-                            setTimeout(triggerFinish, 2500);
+                            revealContinueButton();
                         }
                     }
                 });
@@ -50,6 +64,10 @@
 
             cards.forEach(card => observer.observe(card));
         };
+
+        if (continueBtn) {
+            continueBtn.addEventListener("click", triggerFinish);
+        }
 
         const revealTimeline = (onComplete, onFinish) => {
             if (onFinish) {

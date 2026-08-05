@@ -1329,3 +1329,101 @@ body.timeline-active .sky {
     margin-top: 16px;
     opacity: 0;
 }
+
+/* =========================================
+   Navigation Buttons (Glassmorphism Sky Blue & White)
+========================================= */
+
+.timeline-action-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    padding-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 5;
+}
+
+.video-action-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    flex-shrink: 0;
+    z-index: 25;
+}
+
+.nav-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: clamp(12px, 2.4vw, 16px) clamp(28px, 5vw, 42px);
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #124068;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(205, 235, 255, 0.65) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+        0 12px 32px rgba(45, 90, 135, 0.22),
+        0 4px 12px rgba(255, 255, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+}
+
+.nav-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    color: #082d4d;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(215, 242, 255, 0.85) 100%);
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow:
+        0 18px 42px rgba(45, 110, 175, 0.32),
+        0 0 24px rgba(175, 225, 255, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.nav-btn:hover::before {
+    left: 140%;
+}
+
+.nav-btn:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow:
+        0 6px 18px rgba(45, 90, 135, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.nav-btn:focus-visible {
+    outline: 3px solid rgba(100, 180, 245, 0.8);
+    outline-offset: 4px;
+}
+

@@ -8,11 +8,16 @@
         const finalScene = root.querySelector("#finalScene");
         const screenFlash = root.querySelector(".screen-flash");
 
+        const nextVideoBtn = root.querySelector("#nextVideoBtn");
+        const finishBtn = root.querySelector("#finishBtn");
+
         const finalHeading = root.querySelector(".final-heading");
         const finalName = root.querySelector(".final-name");
         const finalLine1 = root.querySelector(".final-line-1");
         const finalLine2 = root.querySelector(".final-line-2");
         const finalSignature = root.querySelector(".final-signature");
+
+        let isTransitioning = false;
 
         const initEnding = () => {
             if (videoSection1) gsap.set(videoSection1, { autoAlpha: 0, display: "none" });
@@ -41,6 +46,9 @@
         };
 
         const startEndingSequence = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
             const tl = gsap.timeline({
                 defaults: { ease: "power2.inOut" }
             });
@@ -72,18 +80,15 @@
                 duration: 1.0
             }, "-=0.5")
             .add(() => {
+                isTransitioning = false;
                 playVideoSafely(video1);
             });
-
-            /* Setup Video 1 -> Video 2 Transition */
-            if (video1) {
-                video1.onended = () => {
-                    transitionToVideo2();
-                };
-            }
         };
 
         const transitionToVideo2 = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
             const tl = gsap.timeline({
                 defaults: { ease: "power2.inOut" }
             });
@@ -112,17 +117,15 @@
                 duration: 1.0
             }, "-=0.4")
             .add(() => {
+                isTransitioning = false;
                 playVideoSafely(video2);
             });
-
-            if (video2) {
-                video2.onended = () => {
-                    transitionToFinalScene();
-                };
-            }
         };
 
         const transitionToFinalScene = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
             const tl = gsap.timeline({
                 defaults: { ease: "power2.inOut" }
             });
@@ -179,9 +182,20 @@
                 opacity: 1,
                 y: 0,
                 duration: 1.6,
-                ease: "sine.out"
+                ease: "sine.out",
+                onComplete: () => {
+                    isTransitioning = false;
+                }
             });
         };
+
+        if (nextVideoBtn) {
+            nextVideoBtn.addEventListener("click", transitionToVideo2);
+        }
+
+        if (finishBtn) {
+            finishBtn.addEventListener("click", transitionToFinalScene);
+        }
 
         return {
             initEnding,
