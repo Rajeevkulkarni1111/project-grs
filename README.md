@@ -1,4 +1,4 @@
-# GRS | Friendship Day Experience 💖✨
+# GRS | Friendship Day Experience ✨
 
 > A cinematic, interactive Friendship Day web application handcrafted for **Rashmi Sharma** by **Rajeev**.
 
@@ -101,6 +101,6 @@ npx serve .
 
 ---
 
-## ❤️ Credits
+##  Credits
 
-Crafted with love by **Chaitu** for **Rashmi Sharma** on **Friendship Day**. ✨
+Crafted with love by **Rajeev** for **Rashmi Sharma** on **Friendship Day**. ✨
